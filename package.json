@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "serverless-mysql": "^1.5.4"
+  },
+  "name": "konecta-backend",
+  "version": "1.0.0",
+  "devDependencies": {
+    "esbuild": "^0.14.54",
+    "serverless-esbuild": "^1.32.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrajalesU/konecta-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrajalesU/konecta-backend/issues"
+  },
+  "homepage": "https://github.com/GrajalesU/konecta-backend#readme",
+  "description": ""
+}

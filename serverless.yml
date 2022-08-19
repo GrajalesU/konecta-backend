@@ -4,16 +4,19 @@ frameworkVersion: "3"
 
 useDotenv: true
 
+plugins:
+  - serverless-esbuild
+
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs16.x
   region: us-west-2
   environment:
-    MYSQL_HOST: ${env:RDS_HOST}
-    MYSQL_USER: ${env:RDS_USER}
-    MYSQL_PASSWORD: ${env:RDS_PASSWORD}
-    MYSQL_DATABASE: ${env:RDS_DATABASE}
-    MYSQL_PORT: ${env:RDS_PORT}
+    RDS_HOST: ${env:RDS_HOST}
+    RDS_USER: ${env:RDS_USER}
+    RDS_PASSWORD: ${env:RDS_PASSWORD}
+    RDS_DATABASE: ${env:RDS_DATABASE}
+    RDS_PORT: ${env:RDS_PORT}
     
 
 functions:
