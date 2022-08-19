@@ -1,0 +1,28 @@
+service: konecta-backend
+
+frameworkVersion: "3"
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-west-2
+  environment:
+    MYSQL_HOST: ${env:RDS_HOST}
+    MYSQL_USER: ${env:RDS_USER}
+    MYSQL_PASSWORD: ${env:RDS_PASSWORD}
+    MYSQL_DATABASE: ${env:RDS_DATABASE}
+    MYSQL_PORT: ${env:RDS_PORT}
+    
+
+functions:
+  getTenants:
+    handler: tenant/getTenants.handler
+    description: List all tenants
+    events:
+      - http: 
+          path: tenants
+          method: get  
+  
+
