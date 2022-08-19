@@ -1,7 +1,13 @@
 import mysql from '../database.js';
 
 export async function handler(event) {
-  let results = await mysql.query('SELECT 1 + 1 AS solution')
+  let results = await mysql.query(`
+  SELECT * FROM tenant 
+  JOIN company
+  ON tenant.id = company.id
+  JOIN representative
+  ON representative_id = representative.id;
+  `)
   await mysql.end()
 
   return {
@@ -9,7 +15,6 @@ export async function handler(event) {
     body: JSON.stringify(
       {
         results,
-        input: event,
       },
     ),
   };
