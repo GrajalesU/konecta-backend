@@ -20,8 +20,8 @@ provider:
 
 functions:
   getTenants:
-    handler: tenant/getTenants.handler
-    description: List all tenants
+    handler: tenant/getTenants.getTenants
+    description: Get all tenants
     events:
       - http:
           path: tenants
