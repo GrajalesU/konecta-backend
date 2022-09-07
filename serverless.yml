@@ -26,3 +26,19 @@ functions:
       - http:
           path: tenants
           method: get
+          
+  getTenant:
+    handler: tenant/getTenant.getTenant
+    description: Get a tenant
+    events:
+      - http:
+          path: tenants/tenant
+          method: get
+
+  deleteTenant:
+    handler: tenant/deleteTenant.deleteTenant
+    description: Delete a tenant
+    events:
+      - http:
+          path: tenants/tenant
+          method: delete
