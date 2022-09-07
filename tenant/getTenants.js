@@ -1,6 +1,6 @@
 import mysql from "../database.js";
 
-module.exports.getTenants = (event, context, callback) => {
+module.exports.getTenants = (_, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const sql = `SELECT * FROM konecta.tenant
       JOIN company
