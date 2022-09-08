@@ -1,5 +1,5 @@
 import mysql from "../database.js";
-import { DELETE_TENANT } from "../utils/queries.js";
+import { DELETE_TENANT } from "../utils/tenant.queries.js";
 
 export async function handler(event, context, callback){
   const id = event.queryStringParameters.id;

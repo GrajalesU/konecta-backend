@@ -1,7 +1,7 @@
 import mysql from "../database.js";
 import AWS from "aws-sdk";
 
-import { CREATE_REPRESENTATIVE, CREATE_COMPANY, CREATE_TENANT, CREATE_DYNAMIC_TABLES, UPDATE_LOGO } from "../utils/queries.js";
+import { CREATE_REPRESENTATIVE, CREATE_COMPANY, CREATE_TENANT, CREATE_DYNAMIC_TABLES, UPDATE_LOGO } from "../utils/tenant.queries.js";
 
 const s3 = new AWS.S3();
 const cognito = new AWS.CognitoIdentityServiceProvider()

@@ -1,5 +1,5 @@
 import mysql from "../database.js";
-import { GET_TENANTS } from "../utils/queries.js";
+import { GET_TENANTS } from "../utils/tenant.queries.js";
 
 export async function handler(_, context, callback){
   context.callbackWaitsForEmptyEventLoop = false;
