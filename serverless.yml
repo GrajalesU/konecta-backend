@@ -58,3 +58,11 @@ functions:
       - http: 
           path: products/product
           method: get
+
+  getProducts:
+    handler: products/getProducts.handler
+    description: Get all products from a tenant
+    events:
+      - http: 
+          path: products
+          method: get
