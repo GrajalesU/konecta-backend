@@ -18,3 +18,18 @@ JOIN konecta.stock_${tableName}
 ON product_${id_tenant}.id = stock.product_id
 WHERE  id = ?;
 `
+export const CREATE_PRODUCT = (id_tenant) => `
+INSERT INTO product_${id_tenant}
+(name,description)
+VALUES (?, ?);
+`
+export const ADD_STOCK = (id_tenant) => `
+INSERT INTO stock_${id_tenant}
+(id_product,amount)
+VALUES (?, ?);
+`
+export const ADD_IMAGE = (id_tenant) => `
+INSERT INTO image_${id_tenant}
+(id_product,src)
+VALUES (?, ?);
+`

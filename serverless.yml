@@ -75,3 +75,11 @@ functions:
           path: products/product
           method: delete
   
+  createProduct:
+    handler: products/createProduct.handler
+    description: Add product from a tenant
+    events:
+      - http:
+          path: products
+          method: post
+  
