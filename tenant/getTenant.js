@@ -1,5 +1,5 @@
 import mysql from "../database.js";
-import { GET_TENANT } from "../utils/queries.js";
+import { GET_TENANT } from "../utils/tenant.queries.js";
 
 export async function handler(event, context, callback){
   const id = event.queryStringParameters.id;

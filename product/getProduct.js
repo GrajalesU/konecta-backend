@@ -1,11 +1,11 @@
 import mysql from "../database.js";
-import { DELETE_TENANT } from "../utils/tenant.queries.js";
+import { GET_PRODUCT } from "../utils/product.queries.js";
 
-export async function handler(event, context, callback){
-  const id = event.queryStringParameters.id;
+export async function handler(event, context, callback) {
+  const { id_tenant, id_product } = event.queryStringParameters;
   context.callbackWaitsForEmptyEventLoop = false;
-  const sql = DELETE_TENANT;
-  mysql.query(sql, [id], (error, result) => {
+  const sql = GET_PRODUCT(id_tenant);
+  mysql.query(sql, [id_product], (error, row) => {
     if (error) {
       callback({
         statusCode: 500,
@@ -15,7 +15,7 @@ export async function handler(event, context, callback){
       callback(null, {
         statusCode: 200,
         body: JSON.stringify({
-          res: `Eliminado correctamente`,
+          tenant: row,
         }),
       });
     }

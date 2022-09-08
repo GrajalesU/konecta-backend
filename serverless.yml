@@ -50,3 +50,11 @@ functions:
       - http:
           path: tenants
           method: post
+  
+  getProduct:
+    handler: products/getProduct.handler
+    description: Get an specific product from a tenant
+    events:
+      - http: 
+          path: products/product
+          method: get
