@@ -66,3 +66,12 @@ functions:
       - http: 
           path: products
           method: get
+  
+  deleteProduct:
+    handler: products/deleteProduct.handler
+    description: Delete product from a tenant
+    events:
+      - http: 
+          path: products/product
+          method: delete
+  
