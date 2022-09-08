@@ -17,15 +17,36 @@ provider:
     RDS_PASSWORD: ${env:RDS_PASSWORD}
     RDS_DATABASE: ${env:RDS_DATABASE}
     RDS_PORT: ${env:RDS_PORT}
-    
 
 functions:
   getTenants:
     handler: tenant/getTenants.handler
-    description: List all tenants
+    description: Get all tenants
     events:
-      - http: 
+      - http:
           path: tenants
-          method: get  
-  
+          method: get
+          
+  getTenant:
+    handler: tenant/getTenant.handler
+    description: Get a tenant
+    events:
+      - http:
+          path: tenants/tenant
+          method: get
 
+  deleteTenant:
+    handler: tenant/deleteTenant.handler
+    description: Delete tenant
+    events:
+      - http:
+          path: tenants/tenant
+          method: delete
+
+  createTenant:
+    handler: tenant/createTenant.handler
+    description: Create tenant
+    events:
+      - http:
+          path: tenants
+          method: post

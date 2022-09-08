@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "serverless": "^3.22.0",
     "serverless-mysql": "^1.5.4"
   },
   "name": "konecta-backend",
@@ -9,7 +10,8 @@
     "serverless-esbuild": "^1.32.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "serverless deploy",
+    "run-local": "serverless invoke local --function "
   },
   "repository": {
     "type": "git",
