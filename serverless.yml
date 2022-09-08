@@ -37,8 +37,16 @@ functions:
 
   deleteTenant:
     handler: tenant/deleteTenant.deleteTenant
-    description: Delete a tenant
+    description: Delete tenant
     events:
       - http:
           path: tenants/tenant
           method: delete
+
+  createTenant:
+    handler: tenant/createTenant.createTenant
+    description: Create tenant
+    events:
+      - http:
+          path: tenants
+          method: post
