@@ -1,7 +1,7 @@
 import mysql from "../database.js";
 import { GET_TENANTS } from "../utils/queries.js";
 
-module.exports.getTenants = (_, context, callback) => {
+export async function handler(_, context, callback){
   context.callbackWaitsForEmptyEventLoop = false;
   const sql = GET_TENANTS;
   mysql.query(sql, (error, rows) => {

@@ -20,7 +20,7 @@ provider:
 
 functions:
   getTenants:
-    handler: tenant/getTenants.getTenants
+    handler: tenant/getTenants.handler
     description: Get all tenants
     events:
       - http:
@@ -28,7 +28,7 @@ functions:
           method: get
           
   getTenant:
-    handler: tenant/getTenant.getTenant
+    handler: tenant/getTenant.handler
     description: Get a tenant
     events:
       - http:
@@ -36,7 +36,7 @@ functions:
           method: get
 
   deleteTenant:
-    handler: tenant/deleteTenant.deleteTenant
+    handler: tenant/deleteTenant.handler
     description: Delete tenant
     events:
       - http:
@@ -44,7 +44,7 @@ functions:
           method: delete
 
   createTenant:
-    handler: tenant/createTenant.createTenant
+    handler: tenant/createTenant.handler
     description: Create tenant
     events:
       - http:
