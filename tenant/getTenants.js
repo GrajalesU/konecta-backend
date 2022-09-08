@@ -1,13 +1,9 @@
 import mysql from "../database.js";
+import { GET_TENANTS } from "../utils/queries.js";
 
 module.exports.getTenants = (_, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
-  const sql = `SELECT * FROM konecta.tenant
-      JOIN company
-      ON tenant.id = company.id
-      JOIN representative
-      ON representative_id = representative.id
-    WHERE its_active = 1`;
+  const sql = GET_TENANTS;
   mysql.query(sql, (error, rows) => {
     if (error) {
       callback({

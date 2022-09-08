@@ -1,11 +1,10 @@
 import mysql from "../database.js";
+import { DELETE_TENANT } from "../utils/queries.js";
 
 module.exports.deleteTenant = (event, context, callback) => {
   const id = event.queryStringParameters.id;
   context.callbackWaitsForEmptyEventLoop = false;
-  const sql = `UPDATE konecta.tenant
-          SET its_active = 0
-          WHERE id = ?`;
+  const sql = DELETE_TENANT;
   mysql.query(sql, [id], (error, result) => {
     if (error) {
       callback({

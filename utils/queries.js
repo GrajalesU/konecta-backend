@@ -16,8 +16,8 @@ INSERT INTO konecta.tenant
 VALUES ( 1, ?) 
 `
 
-export const CREATE_DYNAMIC_TABLES = (stock,product,image) => 
-`
+export const CREATE_DYNAMIC_TABLES = (stock, product, image) =>
+  `
 CREATE TABLE  ${stock} (
   id INT NOT NULL AUTO_INCREMENT,
   amount INT NOT NULL,
@@ -50,15 +50,29 @@ CREATE TABLE IF NOT EXISTS ${image} (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 `
-// 1. stock -- konecta.{stock_id}
-// 2. product -- konecta.{product_id}
-// 2.1. stock
-// 3. image -- konecta.{image_id}
-// 3.1 product
+
 
 export const UPDATE_LOGO = `
 UPDATE konecta.tenant 
 SET logo = ?
 WHERE id = ?
 `
+export const DELETE_TENANT = `UPDATE konecta.tenant
+SET its_active = 0
+WHERE id = ?`
 
+export const GET_TENANT = `
+SELECT * FROM konecta.tenant
+  JOIN company
+  ON tenant.id = company.id
+  JOIN representative
+  ON representative_id = representative.id
+WHERE tenant.id = ? AND its_active = 1
+`
+
+export const GET_TENANTS = `SELECT * FROM konecta.tenant
+JOIN company
+ON tenant.id = company.id
+JOIN representative
+ON representative_id = representative.id
+WHERE its_active = 1`
