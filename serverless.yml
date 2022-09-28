@@ -17,6 +17,19 @@ provider:
     RDS_PASSWORD: ${env:RDS_PASSWORD}
     RDS_DATABASE: ${env:RDS_DATABASE}
     RDS_PORT: ${env:RDS_PORT}
+    STRIPE_KEY: ${env:STRIPE_KEY}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:us-west-2:424461409538"
 
 functions:
   getTenants:
@@ -26,7 +39,7 @@ functions:
       - http:
           path: tenants
           method: get
-          
+
   getTenant:
     handler: tenant/getTenant.handler
     description: Get a tenant
@@ -50,36 +63,43 @@ functions:
       - http:
           path: tenants
           method: post
-  
+
   getProduct:
-    handler: products/getProduct.handler
+    handler: product/getProduct.handler
     description: Get an specific product from a tenant
     events:
-      - http: 
+      - http:
           path: products/product
           method: get
 
   getProducts:
-    handler: products/getProducts.handler
+    handler: product/getProducts.handler
     description: Get all products from a tenant
     events:
-      - http: 
+      - http:
           path: products
           method: get
-  
+
   deleteProduct:
-    handler: products/deleteProduct.handler
+    handler: product/deleteProduct.handler
     description: Delete product from a tenant
     events:
-      - http: 
+      - http:
           path: products/product
           method: delete
-  
+
   createProduct:
-    handler: products/createProduct.handler
+    handler: product/createProduct.handler
     description: Add product from a tenant
     events:
       - http:
           path: products
           method: post
-  
+
+  checkout:
+    handler: checkout/createCheckout.handler
+    description: Create checkout session from stripe
+    events:
+      - http:
+          path: checkout
+          method: post
