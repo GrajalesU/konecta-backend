@@ -46,9 +46,7 @@ export function validateCartItems(inventorySrc, cartDetails) {
       item.price_data.product_data.description = inventoryItem.description;
 
     if (!!inventoryItem.imgs && inventoryItem.imgs.length > 0)
-      item.price_data.product_data.images = [
-        "https://konectapp.s3.us-west-2.amazonaws.com/16ace113-bf40-4519-8aca-31e2ee8e2d4a/product/f578c3ea-5f6a-4ba8-9e90-425550e68e5f/product_68742942-5533-4ffc-8402-a507555b6746.jpg",
-      ];
+      item.price_data.product_data.images = [...inventoryItem.imgs];
 
     validatedItems.push(item);
   }
