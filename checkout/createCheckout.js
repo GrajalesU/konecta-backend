@@ -4,6 +4,25 @@ const AWS = require("aws-sdk");
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
 export async function handler(event, context, callback) {
+  // callback(null, {
+  //   statusCode: 200,
+  //   headers: {
+  //     "Access-Control-Allow-Origin": "*",
+  //     "Access-Control-Allow-Credentials": true,
+  //     "Access-Control-Allow-Methods": GET,
+  //     POST,
+  //     PATCH,
+  //     PUT,
+  //     DELETE,
+  //     OPTIONS,
+  //   },
+  //   body: JSON.stringify({
+  //     statusCode: 200,
+
+  //     body: { message: "todo good" },
+  //   }),
+  // });
+
   try {
     const products = await dynamo
       .scan({ TableName: event.queryStringParameters.tableName })
@@ -29,7 +48,6 @@ export async function handler(event, context, callback) {
     }
 
     const StripeManager = new Stripe(process.env.STRIPE_KEY);
-
     const line_items = validateCartItems(products.Items, cartItems);
 
     const sessionParms = {
@@ -49,6 +67,10 @@ export async function handler(event, context, callback) {
     if (session) {
       return callback(null, {
         statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": true,
+        },
         body: JSON.stringify({
           session,
         }),
